@@ -34,9 +34,13 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update(restaurant_params)
+
     # Will raise ActiveModel::ForbiddenAttributesError
-    redirect_to restaurants_path
+      if @restaurant.update(restaurant_params)
+        redirect_to restaurants_path
+      else
+        render 'edit'
+      end
   end
 
   def destroy

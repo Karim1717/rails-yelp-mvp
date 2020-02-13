@@ -1,1 +1,14 @@
 <h1>Show</h1>
+<h1> Restaurant <%= @restaurant.id %> </h1>
+<h2>Title : <%= @restaurant.name %></h2>
+<h3>Details : <%= @restaurant.address %></h3>
+<%= link_to 'Home page', restaurants_path %>
+
+<%= link_to "Delete #{@restaurant.name}",
+            restaurant_path(@restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+
+
+<%= link_to "Update #{@restaurant.name}",
+            edit_restaurant_path(@restaurant.id) %>
